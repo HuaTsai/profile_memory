@@ -5,7 +5,7 @@ from pathlib import Path
 
 if __name__ == "__main__":
     script_path = Path(os.path.abspath(__file__)).parent / "memory_monitor.py"
-    autostart_path = Path("~/.config/autostart/server-memory-monitor.desktop")
+    autostart_path = Path("~/.config/autostart/server-memory-monitor.desktop").expanduser()
 
     with open(autostart_path, "w") as f:
         f.write(f"""[Desktop Entry]
