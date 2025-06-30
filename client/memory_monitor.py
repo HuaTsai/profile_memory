@@ -57,8 +57,6 @@ class MemoryMonitor(QWidget):
 
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_memory_usage)
-        # self.timer.setInterval(10 * 60 * 1000)  # 10 minutes
-        # self.timer.start()
 
         self.file_path = "/tmp/memory_usage.json"
         self.update_memory_usage()
@@ -104,7 +102,6 @@ class MemoryMonitor(QWidget):
             self.time_label.setText(f"Update failed: {datetime.now().strftime('%H:%M:%S')}")
             self.time_label.setStyleSheet("color: red;")
 
-            # self.timer.stop()
             self.timer.setInterval(30_000)  # Retry after 30 seconds
             self.timer.start()
         except Exception as e:
@@ -112,7 +109,6 @@ class MemoryMonitor(QWidget):
             self.time_label.setText(f"Error: {datetime.now().strftime('%H:%M:%S')}")
             self.time_label.setStyleSheet("color: red;")
 
-            # self.timer.stop()
             self.timer.setInterval(30_000)  # Retry after 30 seconds
             self.timer.start()
     
@@ -136,7 +132,7 @@ class MemoryMonitor(QWidget):
 
             docker_info = ""
             for key, value in data.items():
-                if key not in ['time', 'total_memory', 'available_memory', 'used_memory']:
+                if key not in ['time', 'total_memory', 'available_memory', 'used_memory', 'dataset-datadayschedulemessagejob', 'annotation-hourschedulejob', 'user-dayschedulemessagejob']:
                     docker_info += f"{key}: {value} GB\n"
             
             if docker_info:
