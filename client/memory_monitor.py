@@ -86,7 +86,7 @@ class MemoryMonitor(QWidget):
     def update_memory_usage(self):
         try:
             server_name = "basicai"
-            remote_path = "~/memory_usage.json"
+            remote_path = "~/server/memory_usage.json"
 
             print("run rsync command...")
             cmd = ["rsync", "--timeout=10", "-avz", f"{server_name}:{remote_path}", self.file_path]
@@ -124,9 +124,10 @@ class MemoryMonitor(QWidget):
             self.used_mem_label.setText(f"Used: {data.get('used_memory', '--')} GB")
             self.avail_mem_label.setText(f"Available: {data.get('available_memory', '--')} GB")
 
-            if data.get('available_memory', 0) < data.get('total_memory', 0) * 0.1:
+            mem = data.get('available_memory', 0)
+            if mem < data.get('total_memory', 0) * 0.1:
                 noti = notify2.Notification("Low Memory Warning",
-                                        "Available memory is below 10% of total memory", "dialog-warning")
+                                        f"Available memory ({mem} GB) is below 10% of total memory", "dialog-warning")
                 noti.set_urgency(notify2.URGENCY_CRITICAL)
                 noti.show()
 

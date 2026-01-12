@@ -18,8 +18,7 @@ double double_to_fixed(double value) {
 }
 
 int main() {
-  std::string home_dir = getenv("HOME");
-  std::string output_path = home_dir + "/memory_usage.json";
+  std::string output_path = "./memory_usage.json";
 
   json memory_data;
 
