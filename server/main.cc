@@ -18,7 +18,8 @@ double double_to_fixed(double value) {
 }
 
 int main() {
-  std::string output_path = "./memory_usage.json";
+  std::filesystem::path currentpath = std::filesystem::current_path();
+  std::string output_path = currentpath / "memory_usage.json";
 
   json memory_data;
 
