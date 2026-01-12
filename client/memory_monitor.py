@@ -86,7 +86,7 @@ class MemoryMonitor(QWidget):
     def update_memory_usage(self):
         try:
             server_name = "basicai"
-            remote_path = "~/server/memory_usage.json"
+            remote_path = "/tmp/memory_usage.json"
 
             print("run rsync command...")
             cmd = ["rsync", "--timeout=10", "-avz", f"{server_name}:{remote_path}", self.file_path]
