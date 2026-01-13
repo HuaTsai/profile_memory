@@ -1,0 +1,11 @@
+# Edit absolute path and put this file under ~/.config/autostart/
+[Desktop Entry]
+Name=Server Memory Monitor
+Comment=Monitor server memory usage
+Exec=python3 path/to/client.py
+Terminal=false
+Type=Application
+Icon=utilities-system-monitor
+Categories=System;Monitor;
+StartupNotify=false
+X-GNOME-Autostart-enabled=true
